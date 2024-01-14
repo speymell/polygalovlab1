@@ -4,9 +4,10 @@ from Models.good import Base, User
 from sqlalchemy import create_engine, text, insert, select
 from sqlalchemy.ext.asyncio import create_async_engine
 from config import  settings
-#ur_p = "postgresql+asyncpg://postgres:12345@localhost:5432/postgres"
+ur_s = "postgresql://postgres:12345@localhost:5432/postgres"
 #engine = create_async_engine(ur_p, echo=True)
-ur_s = "postgresql://postgres@localhost:5432/postgres"
+#ur_s = settings.POSTGRES_DATABASE_URLS
+
 
 print(ur_s)
 engine_s = create_engine(ur_s, echo=True)
