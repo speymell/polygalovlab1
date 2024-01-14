@@ -18,3 +18,6 @@ def create_tables():
     Base.metadata.drop_all(bind=engine_a)
     Base.metadata.create_all(bind=engine_a)
 def f():
+    with engine_a.connect() as conn:
+        answer = conn.execute(text('select * from users;'))
+        print(f'answer={answer.all()}')
