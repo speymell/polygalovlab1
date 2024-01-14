@@ -1,6 +1,6 @@
 from typing import Union, Annotated, List, Optional
 from pydantic import BaseModel, Field, HttpUrl
-from sqlalchemy import Column, Integer, Float, Sequence , Boolean, ForeignKey, String
+from sqlalchemy import Column, Integer, Identity, Float, Sequence , Boolean, ForeignKey, String
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -11,7 +11,7 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = "users"
-    id = Column(Integer, Sequence("user_id_seq", start=1), primary_key = True)
+    id = Column(Integer, Identity(start=1), primary_key = True)
     name = Column(String,index=True,nullable=False)
     hashed_password = Column(String)
 
