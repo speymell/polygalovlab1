@@ -36,12 +36,12 @@ class Foto(BaseModel):
     url:HttpUrl
     name:Union[str,None] = None
 
-class User(BaseModel):
-    name: Union[str, None] = None
-    id: Annotated[Union[int,None], Field(default=100,ge=10,lt=200)] = None
-    person: Union[Person, None] = None
-    day_list0 : list
-    day_list1: Union[list, None] = None
+#class User(BaseModel):
+#    name: Union[str, None] = None
+#    id: Annotated[Union[int,None], Field(default=100,ge=10,lt=200)] = None
+#    person: Union[Person, None] = None
+#    day_list0 : list
+#    day_list1: Union[list, None] = None
 
 class Tags(Enum):
     users = "users"
