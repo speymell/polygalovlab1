@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from config import  settings
 #ur_p = "postgresql+asyncpg://postgres:12345@localhost:5432/postgres"
 #engine = create_async_engine(ur_p, echo=True)
-ur_s = settings.POSTGRES_DATABASE_URLS
+ur_s = "postgresql://postgres@localhost:5432/postgres"
 
 print(ur_s)
 engine_s = create_engine(ur_s, echo=True)

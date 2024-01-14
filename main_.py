@@ -6,7 +6,7 @@ from datetime import datetime
 from Public.router_users import users_router
 from db import engine_s, create_tables, f, f_bilder
 app = FastAPI()
-f()
+#f()
 #fa_bilder()
 app.include_router(users_router)
 
