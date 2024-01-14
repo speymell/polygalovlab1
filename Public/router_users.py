@@ -5,12 +5,13 @@ from sqlalchemy.orm import sessionmaker, declarative_base, Session
 from Models.good import User, Base, Tags , Main_User, New_Respons
 #from config import settings
 from typing import Union, Annotated
+from db import engine_s
 
-engine = create_engine("postgresql://postgres:12345@localhost:5432/postgres", connect_args={"check_same_thread": True})
+#engine = create_engine("postgresql://postgres:12345@localhost:5432/postgres", connect_args={"check_same_thread": True})
 
-
+sessiong_make = sessionmaker(engine_s)
 def get_session():
-    with Session(engine) as session:
+    with Session(engine_s) as session:
         try:
             yield session
         finally:
@@ -24,7 +25,6 @@ info_router = APIRouter(tags=[Tags.info])
 
 def coder_passwd(cod: str):
     return cod * 2
-
 
 @users_router.get("/{id}", response_model=Union[New_Respons, Main_User], tags=[Tags.info])
 # далее идут опуерации пути для CRUD
