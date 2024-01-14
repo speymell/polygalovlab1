@@ -41,6 +41,12 @@ class User(BaseModel):
     day_list0 : list
     day_list1: Union[list, None] = None
 
+class Tags(Enum):
+    users = "users"
+    advents = "advents"
+    info = "info"
+    good = "good"
+
 class Main_User(BaseModel):
     name: Union[str, None] = None
     id: Annotated[Union[int,None], Field(default=100, ge=1, lt=200)] = None
