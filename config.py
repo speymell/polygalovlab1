@@ -11,13 +11,14 @@ class Settings:
     POSTGRES_PORT: str
     POSTGRES_DB: str
 
-load_dotenv()
+#load_dotenv()
 settings = Settings()
 
 settings.POSTGRES_PORT = os.environ.get('POSTGRES_PORT')
 settings.POSTGRES_PASSWORD = os.environ.get('POSTGRES_PORT')
 settings.POSTGRES_USER = os.environ.get('POSTGRES_PORT')
 settings.POSTGRES_DB = os.environ.get('POSTGRES_PORT')
+
 settings.POSTGRES_DATABASE_URL = f"postgresql+asyncpg:" \
                                 f"//{settings.POSTGRES_USER}:" \
                                 f"{settings.POSTGRES_PASSWORD}" \

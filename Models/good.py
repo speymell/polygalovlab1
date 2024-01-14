@@ -9,6 +9,7 @@ from sqlalchemy.orm import declarative_base
 from enum import Enum
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, Identity(start=1), primary_key = True)
