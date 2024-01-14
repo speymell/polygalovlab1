@@ -19,7 +19,7 @@ def get_session():
 
 
 # реализация маршрутов для операций c конкретными тегами - конкретизация роутера
-users_router = APIRouter(tags=[Tags.users], prefix='/api/users')
+users_router = APIRouter(tags=[Tags.users])
 info_router = APIRouter(tags=[Tags.info])
 
 

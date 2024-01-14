@@ -1,7 +1,8 @@
 import uvicorn
 from fastapi import FastAPI, Response, Path, Body, Header
 from fastapi.responses import PlainTextResponse
-from Public.users import users_router
+#from Public.users import users_router
+from Public.router_users import users_router
 from datetime import datetime
 app = FastAPI()
 #f()
@@ -23,5 +24,5 @@ def shutdown():
 #def main():
 #    return FileResponse("files/index.html")
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+#if __name__ == "__main__":
+#    uvicorn.run(app, host="127.0.0.1", port=8000)
