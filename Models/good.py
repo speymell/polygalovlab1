@@ -13,8 +13,9 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, Identity(start=1), primary_key = True)
-    name = Column(String,index=True,nullable=False)
+    name = Column(String)
     hashed_password = Column(String)
+    email = Column(String)
 
     #goods = relationship("Good", back_populates="owner")
     #class Good(metadata):
