@@ -19,6 +19,7 @@ def on_startup():
 def shutdown():
     open("log.txt", mode="a").write(f'{datetime.utcnow()}: End\n')
 
+
 #@app.get('/', response_class=PlainTextResponse)
 #def f_indexH():
 #    return "<b> Привет, пользователь!</b>"
