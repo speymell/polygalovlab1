@@ -3,8 +3,6 @@ from fastapi import FastAPI, Response, Path, Body, Header
 from fastapi.responses import PlainTextResponse
 from Public.users import users_router
 from datetime import datetime
-from Public.router_users import users_router
-from db import engine_s, create_tables, f, f_bilder
 app = FastAPI()
 #f()
 #fa_bilder()
