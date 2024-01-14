@@ -4,10 +4,10 @@ from Public.users import users_router
 from datetime import datetime
 from Public.router_users import init_db
 from Public.router_users import users_router
-from db import create_tables, f, fa_bilder
+from db import create_tables, f, f_bilder
 app = FastAPI()
 f()
-fa_bilder()
+#fa_bilder()
 app.include_router(users_router)
 
 @app.on_event("startup")

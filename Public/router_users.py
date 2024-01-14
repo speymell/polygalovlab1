@@ -6,7 +6,7 @@ from Models.good import User, Base, Tags , Main_User, New_Respons
 #from config import settings
 from typing import Union, Annotated
 
-engine = create_engine("postgresql+asyncpg://postgres:12345@localhost:5432/postgres", connect_args={"check_same_thread": True})
+engine = create_engine("postgresql://postgres:12345@localhost:5432/postgres", connect_args={"check_same_thread": True})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def init_db():
@@ -36,19 +36,19 @@ def get_user_(id:int,response: Response, DB: Session = Depends(get_session)):
     else:
         return user
 #@users_router.get("/",response_model=Union[list[Main_User], New_Respons, tags=[Tags.users])
-@users_router.post("/", response_model=Union[Main_User, New_Respons], tags=[Tags.users], status_code=status.HTTP_201_CREATED)
-def create_user(item: Annotated[Main_User, Body(embed=True, description="Новый пользователь")], DB: Session = Depends((get_session()))):
-    try:
-        user = User(id=item.id, name=item.name, hashed_password=coder_passwd(item.name))
-
-        if user is None:
-            raise HTTPException(status_code=404, detail="Объект не определён!")
-        DB.add(user)
-        DB.commit()
-        DB.refresh()
-        return user
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Произошла ошибка при добавлении объекта{user}")
+# @users_router.post("/", response_model=Union[Main_User, New_Respons], tags=[Tags.users], status_code=status.HTTP_201_CREATED)
+# def create_user(item: Annotated[Main_User, Body(embed=True, description="Новый пользователь")], DB: Session = Depends((get_session()))):
+#     try:
+#         user = User(id=item.id, name=item.name, hashed_password=coder_passwd(item.name))
+#
+#         if user is None:
+#             raise HTTPException(status_code=404, detail="Объект не определён!")
+#         DB.add(user)
+#         DB.commit()
+#         DB.refresh()
+#         return user
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Произошла ошибка при добавлении объекта{user}")
 @users_router.put("/", response_model=Union[Main_User, New_Respons], tags=[Tags.users])
 
 @users_router.patch("/{id}", response_model=Union[Main_User, New_Respons], tags=[Tags.users])
