@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from fastapi import APIRouter, Body, status, HTTPException, Depends
 from fastapi.responses import JSONResponse, Response
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
-from Models.good import User, Base, Tags , Main_User, New_Respons
+from Models.good import *
 #from config import settings
 from typing import Union, Annotated
 from db import engine_s
