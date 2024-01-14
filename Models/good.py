@@ -9,7 +9,6 @@ from sqlalchemy.orm import declarative_base
 from enum import Enum
 Base = declarative_base()
 
-
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, Identity(start=1), primary_key = True)
@@ -58,3 +57,10 @@ class Main_UserDB(Main_User):
 
 class New_Respons(BaseModel):
     message: str
+
+class Good(BaseModel):
+    id: Annotated[Union[int, None], Field(default=100, ge=10, lt=200)] = None
+    name: Union[str, None] = None
+    description: Union[str, None] = None
+    price: Union[float, None] = 0
+    nalog: Union[float, None] = 13.6

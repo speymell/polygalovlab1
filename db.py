@@ -1,7 +1,7 @@
 import asyncio
 #from config import settings
 from Models.good import Base, User
-from sqlalchemy import create_engine, text, insert, select
+from sqlalchemy import create_engine, text, Insert, Select
 from sqlalchemy.ext.asyncio import create_async_engine
 from config import  settings
 ur_s = "postgresql://postgres:12345@localhost:5432/postgres"
@@ -28,8 +28,14 @@ def f():
     with engine_s.connect() as conn:
         answer = conn.execute(text('select * from users;'))
         print(f'answer={answer.all()}')
-def f_bilder():
+def f_builder():
     with engine_s.connect() as conn:
-        query = insert(User).values([
-            {"name": "Joe Biden", "hashed password": "12345", "email":"whitehome@yandex.ru"}
+        query = Insert(User).values([
+         {"name": "Emelyanen", "hashed_password": "12345", "email":"hdd@yandex.ru"},
+         {"name": "Rusik", "hashed_password": "67890", "email":"hdddd@gmail.com"}
         ])
+        conn.execute(query)
+        conn.execute(text('commit;'))
+        query = Select(User)
+        answer = conn.execute(query)
+        print(f"answer = {answer.all()}")

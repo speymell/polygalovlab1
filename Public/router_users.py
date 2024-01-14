@@ -108,19 +108,18 @@ def delete_user(id: int, DB: Session = Depends(get_session)):
 #     # получаем пользователя по id
 #     try:
 #         item_good = find_good(str(item.id)) #нашли элемент по ключу
-#         # item_good = good_dict[str(item.id)]
+#         item_good = good_dict[str(item.id)]
 #         if item_good == None:
 #             return New_Respons(message="ошибка")
-#
 #         good_model = Good(**item_good)   #преобразовали элемент из словаря в модель
 #
 #         update_good_dict = item.dict(exclude_unset=True) #преобразуем объект модели в словарь, но только только те данные,
 #         # которые были установлены (отправлены в запросе), без значений по умолчанию (данные для изменения в удобный
-#         # формат)
+# #         # формат)
 #         good_model_copy = good_model.copy(update=update_good_dict) # обновляем данные  модели на новые
 #         good_dict[str(item.id)] = jsonable_encoder(good_model_copy)
-#         return good_model_copy
-#     except HTTPException:
+#             return good_model_copy
+#         except HTTPException:
 #         return New_Respons(message = f'Ошибка {response.status_code}')
 
 
