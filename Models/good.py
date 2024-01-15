@@ -16,6 +16,36 @@ class User(Base):
     hashed_password = Column(String)
     email = Column(String)
 
+class Worker(Base):
+    __tablename__ = "workers"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    company_id = Column(Integer, ForeignKey("companies.id"))
+    #company = relationship("Company", back_populates="workers")
+
+
+class Company(Base):
+    __tablename__ = "companies"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    #workers = relationship("User", back_populates="company")
+
+# class Reader(Base):
+#     __tablename__ = "readers"
+#     id = Column(Integer, Identity(start=1), primary_key = True)
+#     name = Column(String)
+#     hashed_password = Column(String)
+#     email = Column(String)
+#     ticket = relationship("Ticket", back_populates="readers")
+#
+# class Ticket(Base):
+#     __tablename__ = "tickets"
+#     kod_vidachi = Column(Integer, Identity(start=1), primary_key=True)
+#     kod_klienta = Column(Integer, ForeignKey("readers.id"))
+#     data_vidachi = Column(String)
+#     data_okonchania = Column(String)
+#     reader = relationship("Reader", back_populates="tickets")
+
     #goods = relationship("Good", back_populates="owner")
     #class Good(metadata):
     #__tablename__ = "goods"
@@ -35,18 +65,12 @@ class Foto(BaseModel):
     url:HttpUrl
     name:Union[str,None] = None
 
-#class User(BaseModel):
-#    name: Union[str, None] = None
-#    id: Annotated[Union[int,None], Field(default=100,ge=10,lt=200)] = None
-#    person: Union[Person, None] = None
-#    day_list0 : list
-#    day_list1: Union[list, None] = None
-
 class Tags(Enum):
     users = "users"
     advents = "advents"
     info = "info"
     good = "good"
+    workers = "workers"
 
 class Main_User(BaseModel):
     name: Union[str, None] = None

@@ -2,20 +2,23 @@ import asyncio
 #from config import settings
 from Models.good import Base, User
 from sqlalchemy import create_engine, text, Insert, Select
-from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from config import  settings
 ur_s = "postgresql://postgres:12345@localhost:5432/postgres"
+#ur_a = "postgresql+asyncpg://postgres:12345@localhost:5432/postgres"
 #engine = create_async_engine(ur_p, echo=True)
 #ur_s = settings.POSTGRES_DATABASE_URLS
 
 
 print(ur_s)
 engine_s = create_engine(ur_s, echo=True)
-# async def f():
-#     async with engine_a.connect() as conn:
-#         answer = await conn.execute(text('select * from users;'))
+#engine_a = create_async_engine(ur_a, echo=True)
+# async def fa():
+#     async with engine_a.connect() as conna:
+#         answer = await conna.execute(text('select * from users;'))
 #         print(f'answer={answer.all()}')
-# asyncio.get_event_loop().run_until_complete(f())
+# asyncio.get_event_loop().run_until_complete(fa())
 # async def fa_bilder():
 #     with engine_a.connect() as conn:
 #         query = insert(User).values([

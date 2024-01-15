@@ -1,24 +1,13 @@
 import uvicorn
-from fastapi import FastAPI, Response, Path, Body, Header
-from fastapi.responses import PlainTextResponse, FileResponse
+from fastapi import FastAPI, Response, Path, Body, Header, Body, status, HTTPException, Depends
 #from Public.users import users_router
 from Public.router_users import users_router
-from datetime import datetime
 from db import *
 app = FastAPI()
 #f_builder()
+#fa()
 f()
 app.include_router(users_router)
-
-#create_tables()
-# @app.on_event("startup")
-# def on_startup():
-#     open("log.txt", mode="a").write(f'{datetime.utcnow()}: Begin\n')
-# #    init_db()
-#
-# @app.on_event("shutdown")
-# def shutdown():
-#     open("log.txt", mode="a").write(f'{datetime.utcnow()}: End\n')
 
 #@app.get('/')
 #def main():
