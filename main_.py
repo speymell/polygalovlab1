@@ -3,6 +3,15 @@ from fastapi import FastAPI, Response, Path, Body, Header, Body, status, HTTPExc
 #from Public.users import users_router
 from Public.router_users import users_router
 from db import *
+import requests
+from bs4 import BeautifulSoup
+
+response = requests.get('https://2ip.ru/')
+soup = BeautifulSoup(response.content, 'htmp.parser')
+
+my_ip = soup.find('div', class_='ip')
+print(my_ip.text)
+
 app = FastAPI()
 #f_builder()
 #fa()

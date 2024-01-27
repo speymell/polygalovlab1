@@ -7,8 +7,6 @@ from Models.good import *
 from typing import Union, Annotated
 from db import engine_s
 
-#engine = create_engine("postgresql://postgres:12345@localhost:5432/postgres", connect_args={"check_same_thread": True})
-
 session_make = sessionmaker(engine_s)
 def get_session():
     with Session(engine_s) as session:
@@ -17,25 +15,8 @@ def get_session():
         finally:
             session.close()
 
-
-# реализация маршрутов для операций c конкретными тегами - конкретизация роутера
 users_router = APIRouter(tags=[Tags.users])
 info_router = APIRouter(tags=[Tags.info])
-# workers_router = APIRouter(tags=[Tags.workers])
-#
-# @workers_router.get("/{id}", response_model=Union[New_Respons, Main_User], tags=[Tags.workers])
-# def get_workers(id: int, DB: Session = Depends(get_session)):
-#     '''
-#     получаем работника по id
-#     '''
-#     worker = DB.query(Worker).filter(Worker.id == id).first()
-#     # если не найден, отправляем статусный код и сообщение об ошибке
-#     if worker == None:
-#         return JSONResponse(status_code=404, content={"message": "Пользователь не найден"})
-#     # если пользователь найден, отправляем его
-#     else:
-#         return worker
-
 
 def coder_passwd(cod: str):
     return cod * 2

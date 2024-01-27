@@ -1,15 +1,9 @@
 import asyncio
-#from config import settings
 from Models.good import Base, User
 from sqlalchemy import create_engine, text, Insert, Select
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from config import  settings
+from config import settings
 ur_s = "postgresql://postgres:12345@localhost:5432/postgres"
-#ur_a = "postgresql+asyncpg://postgres:12345@localhost:5432/postgres"
-#engine = create_async_engine(ur_p, echo=True)
-#ur_s = settings.POSTGRES_DATABASE_URLS
-
 
 print(ur_s)
 engine_s = create_engine(ur_s, echo=True)
